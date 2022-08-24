@@ -1,5 +1,22 @@
 ﻿module.exports = function (grunt) {
     grunt.initConfig({
+        connect: {
+            options: {
+                port: 9000,
+                // Change this to '0.0.0.0' to access the server from outside.
+                hostname: '0.0.0.0',
+                livereload: 35729
+            },
+            livereload: {
+                    options: {
+                    open: true,
+                    base: [
+                        '.',
+                        'examples'
+                    ]
+                    }
+                }
+            },
         ts: {
             build: {
                 tsconfig: true,
@@ -60,6 +77,8 @@
     });
     
     grunt.loadNpmTasks("grunt-ts");
+    grunt.loadNpmTasks('grunt-serve');
+
     grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks('grunt-contrib-clean');
